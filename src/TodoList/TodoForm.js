@@ -9,13 +9,18 @@ const api_url = "https://localhost:3001/api/v1/todos"
 class TodoForm extends Component {
   constructor(props) {
     super(props)
-
+    let defaultTask = "";
+    let defaultBody = "";
     this.state = {
       api_url: props.api_url,
-      task: "",
+      task: defaultTask,
+      body: defaultBody,
+      defaultTaskValue: defaultTask,
+      defaultBodyValue: defaultBody
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTaskChange = this.handleTaskChange.bind(this);
+    this.handleBodyChange = this.handleBodyChange.bind(this);
   }
 
   handleSubmit(event) {
@@ -31,11 +36,21 @@ class TodoForm extends Component {
       body: data
     }).then(response => response.json())
     .then(response => this.props.updateTodoList(response))
+    this.setState({
+      task: this.state.defaultTaskValue,
+      body: this.state.defaultBodyValue
+    })
   }
 
   handleTaskChange(event) {
     this.setState({
       task: event.target.value
+    })
+  }
+
+  handleBodyChange(event) {
+    this.setState({
+      body: event.target.value
     })
   }
 
@@ -56,6 +71,7 @@ class TodoForm extends Component {
                   variant="outlined"
                   type="text"
                   name="todo[task]"
+                  value={this.state.task}
                   onChange={this.handleTaskChange}
                   fullWidth
                 />
@@ -66,6 +82,8 @@ class TodoForm extends Component {
                 label="Task Body"
                 variant="outlined"
                 type="text"
+                value={this.state.body}
+                onChange={this.handleBodyChange}
                 style={{width: "99.3%", borderRadius: "5px"}}
                 rowsMin={3}
                 placeholder="Describe your todo item"
