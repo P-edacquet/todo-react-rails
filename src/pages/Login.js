@@ -6,7 +6,6 @@ const Login = ({loggedInStatus}) => {
   let history = useHistory()
   const [user, setUser] = useState({ 
     username: '',
-    email: '',
     password: ''
   });
   const [errors, setErrors] = useState([])
@@ -40,8 +39,8 @@ const Login = ({loggedInStatus}) => {
       <div>
         <ul>
           {errors.map(error => {
-              return <li key={error}>{error}</li>
-            })
+            return <li key={error}>{error}</li>
+          })
           }
         </ul>
       </div>
@@ -60,13 +59,6 @@ const Login = ({loggedInStatus}) => {
           type="text"
           name="username"
           value={user.username}
-          onChange={handleChange}
-        />
-        <input
-          placeholder="email"
-          type="text"
-          name="email"
-          value={user.email}
           onChange={handleChange}
         />
         <input

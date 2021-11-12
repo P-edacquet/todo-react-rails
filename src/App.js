@@ -28,7 +28,7 @@ const App = () => {
             <Route 
               exact path='/' 
               render={props => (
-              <Layout isPriave={true}>
+              <Layout>
                 <Home {...props} />
               </Layout>
               )}
@@ -36,16 +36,20 @@ const App = () => {
             <Route 
               exact path='/login' 
               render={props => (
-              <Login {...props} loggedInStatus={isLoggedIn}/>
+              <Layout isPrivate={false}>
+                <Login {...props} />
+              </Layout>
               )}
             />
             <Route 
               exact path='/signup' 
               render={props => (
-              <Signup {...props} loggedInStatus={isLoggedIn}/>
+              <Layout isPrivate={false}>
+                <Signup {...props} loggedInStatus={isLoggedIn}/>
+              </Layout>
               )}
             />
-            </Switch>
+          </Switch>
         </BrowserRouter>
       </div>
     </div>
