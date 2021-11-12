@@ -26,7 +26,8 @@ class TodoList extends Component {
       this.setState({
         items: response_items.reverse()
       })
-    });
+    })
+    .catch(error => console.log('api errors:', error));
   }
 
   updateTodoList(item) {

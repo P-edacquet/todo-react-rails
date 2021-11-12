@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios'
 import { Link, useHistory } from 'react-router-dom'
 
@@ -7,14 +7,9 @@ const Login = ({loggedInStatus}) => {
   const [user, setUser] = useState({ 
     username: '',
     email: '',
-    password: '',
-    errors: ''
+    password: ''
   });
-  const [error, setError] = useState(null)
-
-  useEffect(() => {
-    
-    }, [])
+  const [errors, setErrors] = useState([])
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -22,10 +17,10 @@ const Login = ({loggedInStatus}) => {
     axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
     .then(response => {
       if (response.data.logged_in) {
-        setUser(response.data)
+        // setUser(response.data)
         history.push('/')
       } else {
-        setError(
+        setErrors(
           response.data.errors
         )
       }
@@ -44,10 +39,10 @@ const Login = ({loggedInStatus}) => {
     return (
       <div>
         <ul>
-        {this.state.errors.map(error => {
-            return <li key={error}>{error}</li>
-          })
-        }
+          {errors.map(error => {
+              return <li key={error}>{error}</li>
+            })
+          }
         </ul>
       </div>
     )
@@ -57,7 +52,7 @@ const Login = ({loggedInStatus}) => {
     <div>
       <h1>Log In</h1>
 
-      {error !== null && <div>{error}</div>}
+      { errors !== null ? handleErrors() : <></> }
 
       <form onSubmit={handleSubmit}>
         <input
@@ -89,11 +84,6 @@ const Login = ({loggedInStatus}) => {
         </div>
         
       </form>
-      <div>
-        {
-          // this.state.errors ? handleErrors() : null
-        }
-      </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
 
@@ -11,12 +11,6 @@ const Signup = () => {
     password_confirmation: ''
   })
   const [error, setError] = useState(null)
-      
-  
-
-  useEffect(() => {
-    
-  }, [])
 
   const handleChange = (event) => {
     const {name, value} = event.target
@@ -41,15 +35,15 @@ const Signup = () => {
     .catch(error => console.log('api errors:', error))
   }
 
-  // const handleErrors = () => {
-  //   return (
-  //     <div>
-  //       <ul>{this.state.errors.map((error) => {
-  //         return <li key={error}>{error}</li>
-  //       })}</ul> 
-  //     </div>
-  //   )
-  // }
+  // // const handleErrors = () => {
+  // //   return (
+  // //     <div>
+  // //       <ul>{this.state.errors.map((error) => {
+  // //         return <li key={error}>{error}</li>
+  // //       })}</ul> 
+  // //     </div>
+  // //   )
+  // // }
 
   return (
     <div>
@@ -199,6 +193,6 @@ const Signup = () => {
 // //         </div>
 // //       </div>
 // //     );
-//   }
-// }
+// //   }
+// // }
 export default Signup;
