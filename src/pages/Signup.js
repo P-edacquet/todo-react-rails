@@ -32,7 +32,7 @@ const Signup = () => {
         )
       }
     })
-    .catch(error => console.log('api errors:', error))
+    .catch(console.log('api errors:', error))
   }
 
   // // const handleErrors = () => {

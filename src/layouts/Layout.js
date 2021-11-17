@@ -15,25 +15,20 @@ const Layout = ({children, isPrivate = true}) => {
         setIsLoggedIn(true)
       } else {
         setIsLoggedIn(false)
-        // Test isPrivate 
         if (isPrivate === true) {
-          // redirect to login
           history.push('/login')
         }
       }
     })
     .catch(error => console.log('api errors:', error))
-  }, []);
+  },);
 
-  const onClickHandler = (event) => {
+  const onClickHandler = () => {
     // App du logout rails
     axios.get('http://localhost:3001/logout',
-    {withCredentials: true})    
-    .then(response => {
-      console.log(response.data)
-      // Redirect to login
-      history.push('/login')
-    })
+    {withCredentials: true})
+    // Redirect to login
+    .then(() => history.push('/login'))
     .catch(error => console.log('api errors:', error))
     
   };
