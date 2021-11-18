@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid"
 import Paper from "@material-ui/core/Paper";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/Styles";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete" 
 import { TextareaAutosize, Typography } from "@material-ui/core";
