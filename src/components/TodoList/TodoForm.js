@@ -4,8 +4,6 @@ import Button from "@material-ui/core/Button"
 import Grid from "@material-ui/core/Grid"
 import TextareaAutosize from "@material-ui/core/TextareaAutosize"
 
-const api_url = "https://localhost:3001/api/v1/todos"
-
 class TodoForm extends Component {
   constructor(props) {
     super(props)
