@@ -55,7 +55,6 @@ class TodoList extends Component {
   }
 
   render () {
-    console.log(this.state.items)
     return (
       <Grid container spacing={3}>
         <Grid item xs={12}>
