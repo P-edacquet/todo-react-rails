@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef } from 'react'
+import React, {useState, useEffect } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
@@ -11,11 +11,12 @@ const Layout = ({children, isPrivate = true}) => {
     axios.get('http://localhost:3001/logged_in',
     {withCredentials: true})    
     .then(response => {
-      // console.log(response.data)
       if (response.data.logged_in) {
+        // setIsLoggedIn à faire après le setUser, sinon il y aura une erreur au moment de l'affichage du username
+        // ou alors, il faut créer des variables vides au moment de la création du user, mais ça il y aura un léger
+        // temps où le username ne sera pas affiché
         setUser(response.data.user)
         setIsLoggedIn(true)
-        // username.current = response.data.user.username
       } else {
         setIsLoggedIn(false)
         if (isPrivate === true) {
