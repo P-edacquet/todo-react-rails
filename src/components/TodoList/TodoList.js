@@ -20,7 +20,7 @@ class TodoList extends Component {
   }
 
   getTasks() {
-    fetch(api_url)
+    fetch(api_url, {'credentials': 'include'})
     .then(response => response.json())
     .then(response_items => {
       this.setState({
@@ -55,7 +55,6 @@ class TodoList extends Component {
   }
 
   render () {
-    console.log(this.state.items)
     return (
       <Grid container spacing={3}>
         <Grid item xs={12}>

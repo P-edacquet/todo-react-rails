@@ -4,8 +4,6 @@ import Button from "@material-ui/core/Button"
 import Grid from "@material-ui/core/Grid"
 import TextareaAutosize from "@material-ui/core/TextareaAutosize"
 
-const api_url = "https://localhost:3001/api/v1/todos"
-
 class TodoForm extends Component {
   constructor(props) {
     super(props)
@@ -33,7 +31,8 @@ class TodoForm extends Component {
     await fetch(this.state.api_url, {
       method: "POST",
       mode: "cors",
-      body: data
+      body: data,
+      'credentials': 'include',
     }).then(response => response.json())
     .then(response => this.props.updateTodoList(response))
     this.setState({
