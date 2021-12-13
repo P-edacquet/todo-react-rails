@@ -20,7 +20,7 @@ class TodoList extends Component {
   }
 
   getTasks() {
-    fetch(api_url)
+    fetch(api_url, {'credentials': 'include'})
     .then(response => response.json())
     .then(response_items => {
       this.setState({

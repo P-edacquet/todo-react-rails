@@ -12,7 +12,7 @@ const Layout = ({children, isPrivate = true}) => {
     {withCredentials: true})    
     .then(response => {
       if (response.data.logged_in) {
-        // setIsLoggedIn à faire après le setUser, sinon il y aura une erreur au moment de l'affichage du username
+        // setIsLoggedIn à faire APRÈS le setUser, sinon il y aura une erreur au moment de l'affichage du username
         // ou alors, il faut créer des variables vides au moment de la création du user, mais ça il y aura un léger
         // temps où le username ne sera pas affiché
         setUser(response.data.user)

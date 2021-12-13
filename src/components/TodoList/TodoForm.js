@@ -31,7 +31,8 @@ class TodoForm extends Component {
     await fetch(this.state.api_url, {
       method: "POST",
       mode: "cors",
-      body: data
+      body: data,
+      'credentials': 'include',
     }).then(response => response.json())
     .then(response => this.props.updateTodoList(response))
     this.setState({
