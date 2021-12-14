@@ -3,7 +3,7 @@ import TodoForm from "./TodoForm"
 import TodoItem from "./TodoItem"
 import Grid from "@material-ui/core/Grid"
 
-const api_url = "http://localhost:3001/api/v1/todos"
+const api_url = process.env.REACT_APP_API_URL
 
 class TodoList extends Component {
   constructor(props) {
@@ -17,6 +17,9 @@ class TodoList extends Component {
   }
   componentDidMount() {
     this.getTasks();
+    console.log("zeofijzeofizjefo")
+    console.log(api_url)
+    console.log("aaaaaaaaaa")
   }
 
   getTasks() {
