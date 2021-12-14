@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import { Link, useHistory } from 'react-router-dom'
 
+const api_login = process.env.REACT_APP_API + 'login'
+
 const Login = ({loggedInStatus}) => {
   let history = useHistory()
   const [user, setUser] = useState({ 
@@ -13,7 +15,7 @@ const Login = ({loggedInStatus}) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     
-    axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
+    axios.post(api_login, {user}, {withCredentials: true})
     .then(response => {
       if (response.data.logged_in) {
         // setUser(response.data)

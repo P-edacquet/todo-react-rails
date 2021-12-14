@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
 
+const api_users = process.env.REACT_APP_API + 'users'
+
 const Signup = () => {
   let history = useHistory()
   const [user, setUser] = useState({
@@ -21,7 +23,7 @@ const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
+    axios.post(api_users, {user}, {withCredentials: true})
     .then(response => {
       if (response.data.status === 'created') {
         setUser(response.data)

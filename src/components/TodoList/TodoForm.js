@@ -32,7 +32,8 @@ class TodoForm extends Component {
       method: "POST",
       mode: "cors",
       body: data,
-      'credentials': 'include',
+      // les credentials donnent le current user
+      'credentials': 'include'
     }).then(response => response.json())
     .then(response => this.props.updateTodoList(response))
     this.setState({

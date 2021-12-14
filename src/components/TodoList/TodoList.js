@@ -3,7 +3,7 @@ import TodoForm from "./TodoForm"
 import TodoItem from "./TodoItem"
 import Grid from "@material-ui/core/Grid"
 
-const api_todos = process.env.REACT_APP_API_TODOS
+const api_todos = process.env.REACT_APP_API + 'api/v1/todos'
 
 class TodoList extends Component {
   constructor(props) {
@@ -20,6 +20,7 @@ class TodoList extends Component {
   }
 
   getTasks() {
+    // les credentials donnent le current user
     fetch(api_todos, {'credentials': 'include'})
     .then(response => response.json())
     .then(response_items => {
@@ -42,7 +43,9 @@ class TodoList extends Component {
     // delete the item remotely
     var deleteURL = api_todos + `/${item.id}`
     fetch(deleteURL, {
-      method: "DELETE"
+      method: "DELETE",
+      // les credentials donnent le current user
+      'credentials': 'include'
     }).then(() => {
       // Client side delete
       var _items = this.state.items;
