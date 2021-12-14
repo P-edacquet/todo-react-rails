@@ -3,7 +3,7 @@ import TodoForm from "./TodoForm"
 import TodoItem from "./TodoItem"
 import Grid from "@material-ui/core/Grid"
 
-const api_url = process.env.REACT_APP_API_URL
+const api_todos = process.env.REACT_APP_API_TODOS
 
 class TodoList extends Component {
   constructor(props) {
@@ -17,13 +17,10 @@ class TodoList extends Component {
   }
   componentDidMount() {
     this.getTasks();
-    console.log("zeofijzeofizjefo")
-    console.log(api_url)
-    console.log("aaaaaaaaaa")
   }
 
   getTasks() {
-    fetch(api_url, {'credentials': 'include'})
+    fetch(api_todos, {'credentials': 'include'})
     .then(response => response.json())
     .then(response_items => {
       this.setState({
@@ -43,7 +40,7 @@ class TodoList extends Component {
 
   deleteItem(item) {
     // delete the item remotely
-    var deleteURL = api_url + `/${item.id}`
+    var deleteURL = api_todos + `/${item.id}`
     fetch(deleteURL, {
       method: "DELETE"
     }).then(() => {
@@ -61,7 +58,7 @@ class TodoList extends Component {
     return (
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <TodoForm api_url={api_url} updateTodoList={this.updateTodoList} />
+          <TodoForm api_todos={api_todos} updateTodoList={this.updateTodoList} />
         </Grid>
         <Grid item xs={12} id="todo_list">
           {this.state.items.map((item) => (
