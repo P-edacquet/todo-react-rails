@@ -2,13 +2,16 @@ import React, {useState, useEffect } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
+const api_logged_in = process.env.REACT_APP_API + 'logged_in'
+const api_logout = process.env.REACT_APP_API + 'logout'
+
 const Layout = ({children, isPrivate = true}) => {
   let history = useHistory()
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState({})
 
   useEffect(() => {
-    axios.get('http://localhost:3001/logged_in',
+    axios.get(api_logged_in,
     {withCredentials: true})    
     .then(response => {
       if (response.data.logged_in) {
@@ -29,7 +32,7 @@ const Layout = ({children, isPrivate = true}) => {
 
   const onClickHandler = () => {
     // App du logout rails
-    axios.get('http://localhost:3001/logout',
+    axios.get(api_logout,
     {withCredentials: true})
     // Redirect to login
     .then(() => history.push('/login'))

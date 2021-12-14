@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
-// // import { makeStyles } from '@material-ui/core/styles';
 
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Layout from './layouts/Layout'
-
-// // const useStyles = makeStyles({
-// //   app_title: {
-// //     textAlign: "center"
-// //   }
-// // })
 
 const App = () => {
   const [isLoggedIn] = useState(false)

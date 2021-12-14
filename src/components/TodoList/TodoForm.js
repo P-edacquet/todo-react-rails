@@ -10,7 +10,7 @@ class TodoForm extends Component {
     let defaultTask = "";
     let defaultBody = "";
     this.state = {
-      api_url: props.api_url,
+      api_todos: props.api_todos,
       task: defaultTask,
       body: defaultBody,
       defaultTaskValue: defaultTask,
@@ -28,11 +28,12 @@ class TodoForm extends Component {
 
   async formSubmit(formData) {
     var data = new FormData(formData);
-    await fetch(this.state.api_url, {
+    await fetch(this.state.api_todos, {
       method: "POST",
       mode: "cors",
       body: data,
-      'credentials': 'include',
+      // les credentials donnent le current user
+      'credentials': 'include'
     }).then(response => response.json())
     .then(response => this.props.updateTodoList(response))
     this.setState({
@@ -84,7 +85,7 @@ class TodoForm extends Component {
                 value={this.state.body}
                 onChange={this.handleBodyChange}
                 style={{width: "99.3%", borderRadius: "5px"}}
-                rowsMin={3}
+                rowsmin={3}
                 placeholder="Describe your todo item"
                 name="todo[body]"></TextareaAutosize>
               </Grid>
